@@ -3,16 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Code Wanzofc</title>
+    <title>TEMPLATE WANZOFC</title>
     <style>
-        /* === Basic Styling === */
         body {
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
             background-color: #121212;
             color: #eee;
-            overflow-x: hidden; /* Hide horizontal scroll */
+            overflow-x: hidden; 
         }
 
         #particles-js {
@@ -28,20 +27,19 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            /*justify-content: center;  Remove this to enable parallax */
             min-height: 100vh;
             padding: 20px;
             text-align: center;
-            transform-style: preserve-3d;  /* Required for parallax */
+            transform-style: preserve-3d;  
         }
 
         section {
-            padding: 80px 0; /* Increased padding for better spacing */
+            padding: 80px 0; 
         }
 
         h1 {
             font-size: 3em;
-            margin-bottom: 50px; /* Increased margin for title spacing */
+            margin-bottom: 50px; 
             color: cyan;
         }
 
@@ -49,12 +47,12 @@
             width: 80%;
             max-width: 1200px;
             margin: 0 auto;
-            margin-bottom: 60px; /* Increased margin for container spacing */
-            padding: 30px; /* Add some padding around containers */
+            margin-bottom: 60px; /
+            padding: 30px; 
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            background-color: rgba(34, 34, 34, 0.8); /* Add transparency */
+            background-color: rgba(34, 34, 34, 0.8); 
             border-radius: 10px;
         }
 
@@ -64,7 +62,7 @@
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
             margin: 20px;
             padding: 20px;
-            width: calc(33% - 40px); /* Three cards per row */
+            width: calc(33% - 40px);             
             min-width: 250px;
             box-sizing: border-box;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -105,8 +103,6 @@
             color: #fff;
             display: block;
         }
-
-        /* Styles for parallax effect */
         .parallax {
             position: relative;
             height: 100vh;
@@ -125,8 +121,8 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            pointer-events: none; /* Prevent image from interfering with scrolling */
-            z-index: -2;  /* Behind text and content */
+            pointer-events: none; 
+            z-index: -2;  
         }
 
         .parallax::before {
@@ -135,21 +131,19 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            height: 200px; /* Height of the overlay gradient */
+            height: 200px; 
             background: linear-gradient(to top, #121212, transparent);
             z-index: -1;
         }
-
-        /* Responsive layout */
         @media (max-width: 768px) {
             .card {
-                width: calc(50% - 40px); /* Two cards per row */
+                width: calc(50% - 40px); 
             }
         }
 
         @media (max-width: 480px) {
             .card {
-                width: calc(100% - 40px); /* One card per row */
+                width: calc(100% - 40px); 
             }
         }
 
@@ -161,28 +155,25 @@
 
     <div class="content-wrapper">
         <section class="parallax">
-            <img src="https://images.unsplash.com/photo-1483729558067-c86e0802fcae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2076&q=80" alt="Parallax Background">
-            <h1>Code Wanzofc</h1>
+            <img src="https://files.catbox.moe/2zv4kl.jpg&fit=crop&w=2076&q=80" alt="Parallax Background">
+            <h1>TEMPLATE WANZOFC</h1>
         </section>
 
         <section>
             <div class="container" id="file-container">
                 <h2>Files</h2>
-                <!-- File cards will be added here -->
             </div>
         </section>
 
         <section>
             <div class="container" id="code-container">
-                <h2>Code</h2>
-                <!-- Code cards will be added here -->
+                <h2>code</h2>
             </div>
         </section>
 
         <section>
             <div class="container" id="language-container">
-                <h2>Languages</h2>
-                <!-- Language cards will be added here -->
+                <h2>languages</h2>
             </div>
         </section>
     </div>
@@ -192,7 +183,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
 
     <script>
-        /* === Particles.js Initialization (inline) === */
         particlesJS('particles-js', {
             "particles": {
                 "number": {
@@ -203,7 +193,7 @@
                     }
                 },
                 "color": {
-                    "value": "#00ffff" // Cyan color
+                    "value": "#00ffff" 
                 },
                 "shape": {
                     "type": "circle",
@@ -234,10 +224,10 @@
                     "value": 5,
                     "random": true,
                     "anim": {
-                        "enable": false,
+                        "enable": true,
                         "speed": 40,
                         "size_min": 0.1,
-                        "sync": false
+                        "sync": true
                     }
                 },
                 "line_linked": {
@@ -251,7 +241,7 @@
                     "enable": true,
                     "speed": 6,
                     "direction": "none",
-                    "random": false,
+                    "random": true,
                     "straight": false,
                     "out_mode": "out",
                     "attract": {
@@ -309,42 +299,32 @@
                 "background_size": "cover"
             }
         });
-
-        /* === GSAP Animations === */
         gsap.registerPlugin(ScrollTrigger);
-
-        // Parallax effect
         gsap.to(".parallax img", {
-            yPercent: 100,  // Adjust this value to control the parallax intensity
+            yPercent: 100, 
             ease: "none",
             scrollTrigger: {
                 trigger: ".parallax",
-                start: "top bottom",  // When the top of the trigger hits the bottom of the viewport
-                end: "bottom top",    // When the bottom of the trigger hits the top of the viewport
-                scrub: true          // Smooth scrubbing animation
+                start: "top bottom",  
+                end: "bottom top",  
+                scrub: true          
             }
         });
 
-
-        /* === Fetch Data and Create Cards === */
         fetch('/data')
             .then(response => response.json())
             .then(data => {
                 const fileContainer = document.getElementById('file-container');
                 const codeContainer = document.getElementById('code-container');
                 const languageContainer = document.getElementById('language-container');
-
-                // --- Create File Card ---
                 const fileCard = document.createElement('div');
                 fileCard.className = 'card';
                 fileCard.innerHTML = `
-                    <h2>Template File</h2>
-                    <p>HTML Template Content</p>
+                    <h2>template file</h2>
+                   <p>html template content</p>
                     <div class="code-block">${data.templateContent}</div>
                 `;
                 fileContainer.appendChild(fileCard);
-
-                // --- Create Code Card ---
                 const codeCard = document.createElement('div');
                 codeCard.className = 'card';
                 codeCard.innerHTML = `
@@ -353,8 +333,6 @@
                     <div class="code-block"><pre><code>${data.backendCode}</code></pre></div>
                 `;
                 codeContainer.appendChild(codeCard);
-
-                // --- Create Language Card ---
                 const languageCard = document.createElement('div');
                 languageCard.className = 'card';
                 languageCard.innerHTML = `
@@ -366,8 +344,6 @@
                     </ul>
                 `;
                 languageContainer.appendChild(languageCard);
-
-                 // Animate the cards
                 gsap.fromTo('.card', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.8, delay: 0.5, ease: "power2.out", stagger: 0.2 });
             })
             .catch(error => {
@@ -376,7 +352,6 @@
                 document.getElementById('code-container').innerHTML = `<p>Failed to load content.</p>`;
                 document.getElementById('language-container').innerHTML = `<p>Failed to load content.</p>`;
             });
-
     </script>
 </body>
 </html>
