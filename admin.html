@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Panel</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 20px;
+        }
+        .container {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #ccc;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Admin Panel</h1>
+
+    <div class="container">
+        <h2>Upload File</h2>
+        <form id="fileUploadForm" enctype="multipart/form-data">
+            <label for="file">Pilih File (misalnya, gambar, CSS):</label>
+            <input type="file" id="file" name="file"><br><br>
+            <button type="button" onclick="uploadFile()">Upload File</button>
+        </form>
+        <div id="fileUploadResult"></div>
+    </div>
+
+    <div class="container">
+        <h2>Kirim Kode/Teks</h2>
+        <form id="codeForm">
+            <label for="code">Kode/Teks Backend:</label>
+            <textarea id="code" name="code" rows="10" cols="80"></textarea><br><br>
+            <button type="button" onclick="sendCode()">Kirim Kode</button>
+        </form>
+        <div id="codeResult"></div>
+    </div>
+
+     <div class="container">
+        <h2>Upload Template</h2>
+        <form id="templateUploadForm" enctype="multipart/form-data">
+            <label for="template">Pilih File Template:</label>
+            <input type="file" id="template" name="template"><br><br>
+            <button type="button" onclick="uploadTemplate()">Upload Template</button>
+        </form>
+        <div id="templateUploadResult"></div>
+    </div>
+
+    <script>
+        async function uploadFile() {
+            const form = document.getElementById('fileUploadForm');
+            const fileInput = document.getElementById('file');
+            const resultDiv = document.getElementById('fileUploadResult');
+
+            const formData = new FormData(form);
+
+            try {
+                const response = await fetch('/upload', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    resultDiv.textContent = 'File berhasil diupload: ' + data.message;
+                } else {
+                    resultDiv.textContent = 'Error: ' + data.error;
+                }
+            } catch (error) {
+                resultDiv.textContent = 'Terjadi kesalahan: ' + error;
+            }
+        }
+
+        async function sendCode() {
+            const form = document.getElementById('codeForm');
+            const code = document.getElementById('code').value;
+            const resultDiv = document.getElementById('codeResult');
+
+            try {
+                const response = await fetch('/update-code', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ code: code })
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    resultDiv.textContent = 'Kode berhasil dikirim: ' + data.message;
+                } else {
+                    resultDiv.textContent = 'Error: ' + data.error;
+                }
+            } catch (error) {
+                resultDiv.textContent = 'Terjadi kesalahan: ' + error;
+            }
+        }
+
+        async function uploadTemplate() {
+            const form = document.getElementById('templateUploadForm');
+            const fileInput = document.getElementById('template');
+            const resultDiv = document.getElementById('templateUploadResult');
+
+            const formData = new FormData(form);
+
+            try {
+                const response = await fetch('/upload-template', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    resultDiv.textContent = 'Template berhasil diupload: ' + data.message;
+                } else {
+                    resultDiv.textContent = 'Error: ' + data.error;
+                }
+            } catch (error) {
+                resultDiv.textContent = 'Terjadi kesalahan: ' + error;
+            }
+        }
+    </script>
+</body>
+</html>
