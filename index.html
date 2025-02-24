@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>uji coba</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+        }
+        .header {
+            background-color: #333;
+            color: #fff;
+            padding: 1rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header .logo {
+            display: flex;
+            align-items: center;
+            margin-left: 20px;
+        }
+        .header .logo img {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+        }
+        .header nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+        .header nav li {
+            margin-right: 20px;
+        }
+        .header nav a {
+            color: #fff;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+        }
+        .header nav a::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #fff;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+        .header nav a:hover::before,
+        .header nav a.active::before {
+            transform: scaleX(1);
+        }
+        .hero {
+            background-color: #ddd;
+            padding: 5rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .hero-content {
+            text-align: center;
+            max-width: 600px;
+            margin-right: 30px;
+        }
+        .hero-image img {
+            max-width: 400px;
+            border-radius: 10px;
+        }
+        .cta-button {
+            display: inline-block;
+            background-color: #333;
+            color: #fff;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        .features {
+            padding: 4rem 0;
+            text-align: center;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+            padding: 0 20px;
+        }
+        .feature-item {
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .feature-item i {
+            font-size: 3rem;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+        .code-snippet {
+            background-color: #222;
+            color: #eee;
+            padding: 2rem;
+            overflow-x: auto;
+        }
+        .code-snippet pre {
+            margin: 0;
+            padding: 0;
+        }
+        .code-snippet code {
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            display: block;
+            white-space: pre-wrap;
+        }
+        .template-upload {
+            padding: 2rem;
+            text-align: center;
+        }
+        .template-upload input[type="file"] {
+            margin-bottom: 1rem;
+        }
+        .template-upload button {
+            background-color: #3498db;
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .template-upload button:hover {
+            background-color: #2980b9;
+        }
+        .gallery {
+            padding: 4rem 0;
+            text-align: center;
+        }
+        .gallery .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+            padding: 0 20px;
+        }
+        .gallery .image-grid img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+         .template-content {
+            padding: 2rem;
+            text-align: center;
+        }
+         .contact {
+            padding: 2rem;
+            text-align: center;
+        }
+        .footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+        }
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                align-items: center;
+            }
+            .header nav ul {
+                margin-top: 1rem;
+            }
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+            .hero-content {
+                margin-right: 0;
+            }
+            .hero-image img {
+                max-width: 100%;
+            }
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <img src="logo.png" alt="Website Logo">
+            <span>my proses</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#" data-section="hero">Home</a></li>
+                <li><a href="#" data-section="features">Features</a></li>
+                <li><a href="#" data-section="code-snippet">Code</a></li>
+                <li><a href="#" data-section="gallery">Gallery</a></li>
+                 <li><a href="#" data-section="template-content">Template</a></li>
+                <li><a href="#" data-section="contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section id="hero" class="hero active-section">
+        <div class="hero-content">
+            <h1>Welcome to the Future</h1>
+            <p>Experience the best website ever created!</p>
+            <a href="#" class="cta-button">Get Started</a>
+        </div>
+        <div class="hero-image">
+            <img src="hero-image.jpg" alt="Hero Image">
+        </div>
+    </section>
+    <section id="features" class="features">
+        <h2>Key Features</h2>
+        <div class="feature-grid">
+            <div class="feature-item">
+                <i class="fas fa-rocket"></i>
+                <h3>Blazing Fast</h3>
+                <p>Our website loads in the blink of an eye.</p>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-shield-alt"></i>
+                <h3>Secure & Reliable</h3>
+                <p>Your data is always safe with us.</p>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-magic"></i>
+                <h3>Easy to Use</h3>
+                <p>A user-friendly experience for everyone.</p>
+            </div>
+        </div>
+    </section>
+    <section id="code-snippet" class="code-snippet">
+        <h2>Backend Code Example</h2>
+        <pre><code id="backend-code">
+            // Kode backend akan diupdate dari admin panel di sini
+            function helloWorld() {
+                console.log("Hello, World!");
+            }
+        </code></pre>
+    </section>
+   <section id="template-content" class="template-content">
+        <h2>Template Content</h2>
+        <div id="template-container">
+            <!-- Konten file template akan ditampilkan di sini -->
+            <p>Tidak ada template yang diunggah.</p>
+        </div>
+    </section>
+    <section id="gallery" class="gallery">
+        <h2>Image Gallery</h2>
+        <div class="image-grid">
+            <img src="image1.jpg" alt="Image 1">
+            <img src="image2.jpg" alt="Image 2">
+            <img src="image3.jpg" alt="Image 3">
+        </div>
+    </section>
+     <section id="contact" class="contact">
+        <h2>Contact Us</h2>
+        <p>Hubungi Kami</p>
+    </section>
+    <footer class="footer">
+        <p>© 2023 My Awesome Website</p>
+    </footer>
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        gsap.from(".header", {
+            duration: 1,
+            y: '-100%',
+            ease: "bounce"
+        });
+
+        gsap.from(".hero-content", {
+            duration: 1,
+            opacity: 0,
+            scale: 0.5,
+            delay: 0.5
+        });
+
+        gsap.from(".hero-image", {
+            duration: 1,
+            x: '100%',
+            opacity: 0,
+            delay: 0.5
+        });
+
+        gsap.utils.toArray(".feature-item").forEach(item => {
+            gsap.from(item, {
+                scrollTrigger: {
+                    trigger: item,
+                    start: "top 80%",
+                    end: "bottom 20%",
+                    toggleActions: "restart none none reset"
+                },
+                opacity: 0,
+                y: 50,
+                duration: 0.5
+            });
+        });
+
+        function updateBackendCode(newCode) {
+            const codeElement = document.getElementById('backend-code');
+            codeElement.textContent = newCode;
+        }
+
+        function updateImageGallery(imageUrls) {
+            const imageGrid = document.querySelector('.image-grid');
+            imageGrid.innerHTML = '';
+
+            imageUrls.forEach(url => {
+                const imgElement = document.createElement('img');
+                imgElement.src = url;
+                imgElement.alt = 'Gallery Image';
+                imageGrid.appendChild(imgElement);
+            });
+        }
+
+        function updateTemplateContent(content) {
+            const templateContainer = document.getElementById('template-container');
+            templateContainer.innerHTML = content;
+        }
+
+
+        async function fetchData() {
+            try{
+                const response = await fetch('/data');
+                const data = await response.json();
+
+                updateBackendCode(data.backendCode);
+                updateImageGallery(data.imageUrls);
+                updateTemplateContent(data.templateContent);
+
+            }catch(error){
+                console.error("Gagal fetch data:", error);
+            }
+        }
+
+        fetchData();
+
+        setInterval(fetchData, 5000);
+
+        const navLinks = document.querySelectorAll('.header nav a');
+        const sections = document.querySelectorAll('section');
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetSectionId = link.dataset.section;
+
+                sections.forEach(section => section.classList.remove('active-section'));
+                navLinks.forEach(navLink => navLink.classList.remove('active'));
+
+                document.getElementById(targetSectionId).classList.add('active-section');
+                link.classList.add('active');
+
+                gsap.fromTo(`#${targetSectionId}`, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5 });
+            });
+        });
+       document.querySelector('.header nav a[data-section="hero"]').classList.add('active');
+       // Click Template on load
+       document.querySelector('.header nav a[data-section="template-content"]').click();
+    </script>
+</body>
+</html>
