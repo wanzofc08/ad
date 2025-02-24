@@ -2,19 +2,13 @@ const express = require('express');
 const multer = require('multer');
 const fs = require('fs');
 const path = require('path');
-
 const app = express();
 const port = 3000;
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
-// Variabel untuk menyimpan data
 let backendCodeVariable = '// Kode backend default';
 let imageUrlsVariable = [];
 let templateContentVariable = '<p>Tidak ada template yang diunggah.</p>';
-
-// Konfigurasi Multer
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
         cb(null, 'uploads/'); // Simpan file di folder 'uploads'
