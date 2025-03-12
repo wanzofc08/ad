@@ -3,29 +3,33 @@
   "builds": [
     {
       "src": "awan.js",
-      "use": "@vercel/node"
+      "use": "@vercel/node"  
     },
     {
-      "src": "/**/*",
+      "src": "*.html",
+      "use": "@vercel/static"
+    },
+     {
+      "src": "*.js",
       "use": "@vercel/static"
     }
   ],
   "routes": [
     {
-      "src": "/api/(.*)",
-      "dest": "awan.js"
+      "src": "/api/(.*)", 
+      "dest": "awan.js"   
     },
     {
-      "src": "/admin",
+      "src": "/admin", 
       "dest": "admin.html"
     },
     {
-      "src": "/awan.js",
-      "dest": "awan.js"
+        "src": "/awan.js", 
+        "dest": "awan.js"
     },
     {
-      "src": "/(.*)",  
+      "src": "/(.*)",
       "dest": "index.html" 
     }
   ]
-    }
+}
