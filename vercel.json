@@ -1,0 +1,31 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "awan.js",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "/**/*",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "awan.js"
+    },
+    {
+      "src": "/admin",
+      "dest": "admin.html"
+    },
+    {
+      "src": "/awan.js",
+      "dest": "awan.js"
+    },
+    {
+      "src": "/(.*)",  
+      "dest": "index.html" 
+    }
+  ]
+    }
